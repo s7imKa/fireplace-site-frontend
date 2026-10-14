@@ -8,6 +8,8 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_API_URL: http://localhost:3001/api
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
