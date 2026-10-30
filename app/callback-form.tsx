@@ -5,6 +5,9 @@ import { ApiError, apiFetch } from "@/lib/api";
 
 type CallbackRequest = { id: string; name: string; phone: string; createdAt: string };
 
+const inputClass =
+  "h-11 rounded-md border border-input-border bg-white px-3 text-base font-normal placeholder:text-text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-graphite";
+
 export function CallbackForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("+380");
@@ -29,32 +32,42 @@ export function CallbackForm() {
   }
 
   if (status === "done") {
-    return <p>Дякуємо! Ми вам передзвонимо.</p>;
+    return (
+      <p role="status" className="text-success">
+        Дякуємо! Ми вам передзвонимо.
+      </p>
+    );
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex w-full max-w-sm flex-col gap-3">
-      <h2 className="text-xl font-semibold">Передзвоніть мені</h2>
-      <input
-        className="rounded border px-3 py-2"
-        placeholder="Ім'я"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-        maxLength={100}
-      />
-      <input
-        className="rounded border px-3 py-2"
-        type="tel"
-        placeholder="+380XXXXXXXXX"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-        required
-        pattern="\+380\d{9}"
-        title="Формат: +380XXXXXXXXX"
-      />
+    <form onSubmit={onSubmit} className="flex w-full max-w-sm flex-col gap-4">
+      <h2 className="text-3xl leading-tight font-semibold md:text-4xl">Передзвоніть мені</h2>
+      <label className="flex flex-col gap-1 text-sm font-medium">
+        Ім&apos;я
+        <input
+          className={inputClass}
+          placeholder="Іван"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          maxLength={100}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-sm font-medium">
+        Телефон
+        <input
+          className={inputClass}
+          type="tel"
+          placeholder="+380XXXXXXXXX"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          required
+          pattern="\+380\d{9}"
+          title="Формат: +380XXXXXXXXX"
+        />
+      </label>
       {errors.length > 0 && (
-        <ul className="text-sm text-red-600">
+        <ul role="alert" className="text-sm text-error">
           {errors.map((m) => (
             <li key={m}>{m}</li>
           ))}
@@ -63,7 +76,7 @@ export function CallbackForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="rounded bg-black px-3 py-2 text-white disabled:opacity-50"
+        className="h-11 rounded-md bg-accent px-6 font-semibold text-white transition-colors hover:bg-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-graphite active:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none"
       >
         {status === "sending" ? "Надсилаємо..." : "Передзвоніть мені"}
       </button>
