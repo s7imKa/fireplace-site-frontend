@@ -1,9 +1,5 @@
-import { CallbackForm } from "./callback-form";
+import { HomePage } from "@/components/pages/HomePage";
 
 export default function Home() {
-  return (
-    <main className="flex flex-1 items-center justify-center p-4">
-      <CallbackForm />
-    </main>
-  );
+  return <HomePage />;
 }
