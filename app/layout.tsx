@@ -27,7 +27,7 @@ export const viewport: Viewport = { themeColor: "#242424" };
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="uk" className={`${inter.variable} ${montserrat.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-warm-bg text-text-primary">
+      <body suppressHydrationWarning className="flex min-h-full flex-col bg-warm-bg text-text-primary">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
