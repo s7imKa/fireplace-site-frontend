@@ -23,8 +23,8 @@ export function Hero() {
           className="object-cover"
         />
         {/* Затемнення для читабельності */}
-        <div className="absolute inset-0 bg-linear-to-r from-graphite via-graphite/70 to-graphite/5 lg:via-graphite/25" />
-        <div className="absolute inset-0 bg-linear-to-t from-graphite via-transparent to-black/40" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/85 via-black/15 to-black/10" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/5 to-black/50" />
       </div>
       {/* Тепле світіння від вогню */}
       <div aria-hidden="true" className="pointer-events-none absolute right-[18%] bottom-[22%] -z-10 hidden size-105 rounded-full bg-accent/20 blur-[120px] lg:block" />
@@ -54,7 +54,7 @@ export function Hero() {
         </div>
 
         {/* Ряд переваг */}
-        <ul className="grid grid-cols-2 gap-x-4 gap-y-6 border-t border-white/12 py-7 lg:grid-cols-4 lg:gap-8 lg:py-8">
+        <ul className="grid grid-cols-2 gap-x-4 gap-y-6 py-7 lg:grid-cols-4 lg:gap-8 lg:py-8">
           {benefits.map((b) => (
             <li key={b.title} className="flex items-start gap-3 sm:items-center">
               <span className="grid size-10 shrink-0 place-items-center rounded-md border border-white/15 text-accent sm:size-11">
